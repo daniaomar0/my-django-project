@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2 style="text-align: center">Explore our courses</h2>
+<!--Begin col-->
+<div class="column">
+    {% for course in courses %}
+    <div class="course-item">
+        <img src="{{ course.image.url }}" alt="{{ course.name }}" class="course-image" height=400 width=500>
+        <p>
+            <span class="menu-name">
+                 {{ course.name }}
+            </span>
+            <span class="menu-price">
+                ${{ course.price }}.00
+            </span>
+        </p>
+        <p>
+            Instructor: {{ course.instructor }}
+        </p>
+        <p>
+            {{ course.course_description }}
+        </p>
+    </div>
+    {% endfor %}
+</div>
+<!--End col-->
+{% endblock %}

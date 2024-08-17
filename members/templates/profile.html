@@ -1,0 +1,53 @@
+<!-- members/templates/members/profile.html -->
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="profile-settings">
+    <h2>Profile Settings</h2>
+    <div class="profile-picture">
+        {% if request.user.profile.image.url != '/media/default.jpg' %}
+            <img src="{{ request.user.profile.image.url }}" alt="{{ request.user.username }}">
+        {% else %}
+            <div class="initials">{{ request.user.username|slice:":1" }}</div>
+        {% endif %}
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ u_form|crispy }}
+        </div>
+        <div class="form-group">
+            {{ p_form|crispy }}
+        </div>
+        <div class="form-group">
+            <h3>Change Password</h3>
+            {{ pass_form|crispy }}
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+
+<style>
+    .profile-picture img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+    }
+    .initials {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #007bff;
+        color: white;
+        font-size: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+{% endblock %}
+
+

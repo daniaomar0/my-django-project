@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <article id="hero">
+      <h1 class="heading_shadow">SPECIAL OFFER</h1>
+      <p>
+        30% Off subsicriptions for students 
+      </p>
+      <a href="#" class="cta"> Subscribe now </a>
+    </article>
+  </section>
+  <section>
+    <article>
+      <h2>Our Team</h2>
+      <a href="{% url 'courses' %}">
+        <img src="{% static 'img/team.jpg' %}" alt="team" style="width: 600px; height: 400px;">
+    </a>
+      <p>
+        Our team consists of professional instructors and trainers, you will be satisfied with their inlightful experience through your learning journey.
+      </p>
+      <p>
+        <a href="{% url 'courses' %}">See our team members</a>
+      </p>
+    </article>
+    <article>
+      <h2>Answer questions</h2>
+      <a href="{% url 'recommendations' %}">
+        <img src="{% static 'img/questions.png' %}" alt="questions" style="width: 600px; height: 400px;">
+    </a>
+      <p>
+        To help us customize you learning journey, answer the form that we have made for you.
+      </p>
+      <p>
+        <a href="{% url 'trainings' %}">Start now</a>
+      </p>
+    </article>
+  </section>
+{% endblock %}

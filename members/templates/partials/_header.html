@@ -1,0 +1,31 @@
+{% load static %}
+<header>
+  <img src="{% static 'img/logo_transparent.png' %}" />
+  <form action="{% url 'search' %}" method="GET">
+    <input type="text" name="q" placeholder="Search..." />
+    <button type="submit">Search</button>
+  </form>
+</header>
+<nav>
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'courses' %}">Courses</a></li>
+    <li><a href="{% url 'trainings' %}">Trainings</a></li>
+    {% if user.is_authenticated %}
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">{{ user.username |title}}</a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'profile' %}">Your profile</a>
+                        <a href="#">Your achievements</a>
+                        <a href="#">Your projects</a>
+                        <a href="#">Your stars</a>
+                        <a href="#">Dashboard</a>
+                        <a href="{% url 'logout' %}">Sign out</a>
+                    </div>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+  </ul>
+</nav>

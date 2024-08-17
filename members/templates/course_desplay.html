@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section>
+   <article>
+      <h1>Courses Available</h1>
+      <span>
+         <a href="{% url 'home' %}">Home</a> /
+         <a href="{% url 'courses' %}">Courses</a>
+      </span>
+      <!--Begin row-->
+      <div class="row">
+         {% for course in courses %}
+         <!--Begin col-->
+         <div class="column">
+            <h2>
+                {{ course.name }}
+            </h2>
+            <p>
+                Instructor: {{ course.instructor }}
+            </p>
+            <p>
+                {{ course.course_description }}
+            </p>
+            <p>
+                Price: ${{ course.price }}.00
+            </p>
+         </div>
+         <!--End col-->
+         <!--Begin col-->
+         <div class="column">
+            <img src="{{ course.image.url }}" alt="{{ course.name }}" class="course-image" />
+         </div>
+         <!--End col-->
+         {% endfor %}
+      </div>
+      <!--End row-->
+   </article>
+</section>
+{% endblock %}
